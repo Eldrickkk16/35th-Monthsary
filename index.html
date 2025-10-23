@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Monthsary, My Love 💞</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Great+Vibes&display=swap');
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(135deg, #ffeaf4, #fff5e6);
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Floating hearts and petals */
+  .floating {
+    position: absolute;
+    bottom: 0;
+    animation: floatUp 10s linear infinite;
+    opacity: 0.8;
+    z-index: 1;
+  }
+  @keyframes floatUp {
+    0% {transform: translateY(0) rotate(0deg); opacity: 1;}
+    100% {transform: translateY(-100vh) rotate(360deg); opacity: 0;}
+  }
+
+  .container {
+    text-align: center;
+    position: relative;
+    z-index: 10;
+  }
+
+  h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    color: #e35b8f;
+    margin-bottom: 20px;
+    animation: glow 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from {text-shadow: 0 0 10px #ffb6c1;}
+    to {text-shadow: 0 0 25px #ff6699;}
+  }
+
+  .heart-btn {
+    background-color: #ff85a2;
+    border: none;
+    border-radius: 50%;
+    padding: 20px;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.4);
+    transition: 0.3s;
+  }
+
+  .heart-btn:hover {
+    transform: scale(1.1);
+    background-color: #ff6f91;
+  }
+
+  /* Full-screen letter */
+  .letter {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 250, 253, 0.96);
+    backdrop-filter: blur(6px);
+    z-index: 20;
+    text-align: center;
+    padding: 60px 20px;
+    animation: fadeIn 0.8s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.95);}
+    to {opacity: 1; transform: scale(1);}
+  }
+
+  .letter-content {
+    max-width: 700px;
+    margin: auto;
+    background: rgba(255, 240, 245, 0.8);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 0 25px rgba(255, 182, 193, 0.6);
+    animation: popUp 1s ease forwards;
+  }
+
+  @keyframes popUp {
+    0% {transform: scale(0.8); opacity: 0;}
+    100% {transform: scale(1); opacity: 1;}
+  }
+
+  .letter h2 {
+    font-family: 'Great Vibes', cursive;
+    color: #e35b8f;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+
+  .letter p {
+    color: #5a5a5a;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin: 10px 0;
+  }
+
+  .close-btn {
+    margin-top: 30px;
+    background: #ff85a2;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 25px;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .close-btn:hover {
+    background: #ff6f91;
+    transform: scale(1.1);
+  }
+
+  .bg-music {
+    display: none;
+  }
+
+  .fade-out {
+    animation: fadeOut 0.7s ease forwards;
+  }
+
+  @keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+  }
+</style>
+</head>
+<body>
+
+<audio class="bg-music" autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/08/15/audio_47c6a513b8.mp3?filename=spring-love-117399.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+  <h1>Happy Monthsary, Mahal🤍</h1>
+  <button class="heart-btn" onclick="openLetter()">💌</button>
+</div>
+
+<div class="letter" id="loveLetter">
+  <div class="letter-content">
+    <h2>My Dearest Kyrelle 🌸</h2>
+    <p>
+      I can’t believe it’s been this long already,yet it still feels so special every time we celebrate another month together. 
+      Every time this day comes, I can’t help but smile and think about how far we’ve come.
+      Almost 3 years together, but it feels like i was meant to be inlove with you in every lifetime.
+      I love how we can be so real with each other, how we laugh at random things, and how we still choose to stay no matter what happens.
+    </p>
+    <p>
+      Thank you for staying, for understanding, and for loving me through everything.
+      You make me feel loved in ways I didn’t know I needed.
+      Every little thing about you reminds me how lucky I am to have someone like you in my life.
+      Mahal na mahal kita aking pinakamamahal.
+    </p>
+    <p>
+      No matter where life takes us, I’ll keep choosing you every day, every time, in every way. 
+      I love you endlessly, my mahal.
+      Can’t wait for our 3rd anniversary, yehey!
+    </p>
+    <button class="close-btn" onclick="closeLetter()">Close 💗</button>
+  </div>
+</div>
+
+<script>
+  const music = document.querySelector('.bg-music');
+  const letter = document.getElementById('loveLetter');
+
+  function openLetter() {
+    letter.style.display = 'flex';
+    createHearts();
+    createPetals();
+    music.play();
+  }
+
+  function closeLetter() {
+    letter.classList.add('fade-out');
+    setTimeout(() => {
+      letter.style.display = 'none';
+      letter.classList.remove('fade-out');
+    }, 700);
+  }
+
+  function createHearts() {
+    for (let i = 0; i < 10; i++) {
+      let heart = document.createElement('div');
+      heart.classList.add('floating');
+      heart.innerHTML = '💖';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 10000);
+    }
+  }
+
+  function createPetals() {
+    for (let i = 0; i < 8; i++) {
+      let petal = document.createElement('div');
+      petal.classList.add('floating');
+      petal.innerHTML = '🌸';
+      petal.style.left = Math.random() * 100 + 'vw';
+      petal.style.animationDuration = (7 + Math.random() * 5) + 's';
+      document.body.appendChild(petal);
+      setTimeout(() => petal.remove(), 12000);
+    }
+  }
+</script>
+</body>
+</html>
